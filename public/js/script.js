@@ -16,7 +16,7 @@ const password = document.getElementById("password").value;
 
 try{
 
-const response = await fetch("http://localhost:5000/api/auth/signup",{
+const response = await fetch("/api/auth/signup",{
 method:"POST",
 headers:{
 "Content-Type":"application/json"
@@ -45,6 +45,8 @@ alert("Server Error");
 
 });
 }
+
+
 // ===============================
 // ADMIN DASHBOARD DATA
 // ===============================
@@ -53,7 +55,7 @@ const adminTable = document.getElementById("adminTable");
 
 if(adminTable){
 
-fetch("http://localhost:5000/api/auth/all-users")
+fetch("/api/auth/all-users")
 
 .then(res => res.json())
 
@@ -77,8 +79,10 @@ adminTable.appendChild(row);
 });
 
 }
+
+
 // ===============================
-// LOGIN PROCESS (Backend API)
+// LOGIN PROCESS
 // ===============================
 
 const loginForm = document.getElementById("loginForm");
@@ -91,11 +95,10 @@ e.preventDefault();
 
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
-const role = document.getElementById("role").value;
 
 try{
 
-const response = await fetch("http://localhost:5000/api/auth/login",{
+const response = await fetch("/api/auth/login",{
 
 method:"POST",
 
@@ -114,14 +117,10 @@ const data = await response.json();
 
 if(data.token){
 
-// save token & role
-
 localStorage.setItem("token", data.token);
 localStorage.setItem("role", data.role);
 
 alert("Login Successful");
-
-// redirect
 
 if(data.role === "admin"){
 window.location.href="admin.html";
@@ -194,7 +193,12 @@ alert("Logged out");
 window.location.href="login.html";
 
 }
-//info
+
+
+// ===============================
+// USER INFO FORM
+// ===============================
+
 const infoForm = document.getElementById("infoForm");
 
 if(infoForm){
@@ -208,7 +212,7 @@ const mobile = document.getElementById("mobile").value;
 const email = document.getElementById("email").value;
 const address = document.getElementById("address").value;
 
-const response = await fetch("http://localhost:5000/api/auth/submit-info",{
+const response = await fetch("/api/auth/submit-info",{
 
 method:"POST",
 
