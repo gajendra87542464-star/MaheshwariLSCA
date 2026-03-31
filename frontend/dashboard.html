@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<h2>User Dashboard</h2>
+<a href="login.html">Logout</a>
+</header>
+
+<div class="dashboard">
+
+<div class="card">
+
+<h3>Submit Your Information</h3>
+
+<form id="infoForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="text" id="mobile" placeholder="Mobile Number" required>
+
+<input type="email" id="email" placeholder="Email">
+
+<input type="text" id="address" placeholder="Address">
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h3>Your Submitted Information</h3>
+
+<div id="userData"></div>
+
+</div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
