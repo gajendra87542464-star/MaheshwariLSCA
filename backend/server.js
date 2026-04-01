@@ -9,7 +9,10 @@ const connectDB = require("./config/db");
 connectDB();
 
 app.use(cors());
+
+// BODY PARSER
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // FRONTEND SERVE
 app.use(express.static(path.join(__dirname,"../public")));
@@ -18,6 +21,7 @@ app.get("/",(req,res)=>{
 res.sendFile(path.join(__dirname,"../public/index.html"));
 });
 
+// ROUTES
 app.use("/api/auth", require("./routes/auth.js"));
 
 const PORT = process.env.PORT || 5000;
