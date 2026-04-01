@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-require("dotenv").config();
+const path = require("path");
 
+require("dotenv").config();
 const connectDB = require("./config/db");
 
 connectDB();
@@ -10,16 +11,17 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-// FRONTEND FILES SERVE
-app.use(express.static("public"));
+// FRONTEND SERVE
+app.use(express.static(path.join(__dirname,"../public")));
+
+app.get("/",(req,res)=>{
+res.sendFile(path.join(__dirname,"../public/index.html"));
+});
 
 app.use("/api/auth", require("./routes/auth.js"));
 
-// PORT FOR RENDER
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, ()=>{
-
+app.listen(PORT,()=>{
 console.log(`Server running on port ${PORT}`);
-
 });
