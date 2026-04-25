@@ -55,27 +55,34 @@ const adminTable = document.getElementById("adminTable");
 
 if(adminTable){
 
-fetch("/api/auth/all-users")
+fetch("http://localhost:5000/api/auth/all-users")
 
 .then(res => res.json())
 
 .then(data => {
 
-data.forEach(user => {
+adminTable.innerHTML = ""; // purana data clear
+
+data.forEach((user,index) => {
 
 const row = document.createElement("tr");
 
 row.innerHTML = `
-<td>${user.name}</td>
-<td>${user.mobile}</td>
-<td>${user.email}</td>
-<td>${user.address}</td>
+<td>${index + 1}</td>
+<td>${user.name || ""}</td>
+<td>${user.mobile || ""}</td>
+<td>${user.email || ""}</td>
+<td>${user.address || ""}</td>
 `;
 
 adminTable.appendChild(row);
 
 });
 
+})
+
+.catch(err => {
+console.log("Error loading users:", err);
 });
 
 }
@@ -211,6 +218,8 @@ const name = document.getElementById("name").value;
 const mobile = document.getElementById("mobile").value;
 const email = document.getElementById("email").value;
 const address = document.getElementById("address").value;
+
+console.log(name, mobile, email, address);
 
 const response = await fetch("/api/auth/submit-info",{
 
