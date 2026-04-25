@@ -230,7 +230,7 @@ headers:{
 },
 
 body: JSON.stringify({
-name,
+Fullname: name,
 mobile,
 email,
 address
