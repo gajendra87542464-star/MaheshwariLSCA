@@ -55,7 +55,7 @@ const adminTable = document.getElementById("adminTable");
 
 if(adminTable){
 
-fetch("http://localhost:5000/api/auth/all-users")
+fetch("/api/auth/all-users")
 
 .then(res => res.json())
 
