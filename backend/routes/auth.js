@@ -12,11 +12,11 @@ router.post("/submit-info", async(req,res)=>{
 
 try{
 
-const {name,mobile,email,address} = req.body;
+const {Fullname,mobile,email,address} = req.body;
 
 const newUserInfo = new UserInfo({
 
-name,
+Fullname,
 mobile,
 email,
 address
