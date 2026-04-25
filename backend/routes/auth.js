@@ -9,7 +9,6 @@ const UserInfo = require("../model/Info.js")
 // SUBMIT USER INFORMATION
 
 router.post("/submit-info", async(req,res)=>{
-    console.log(Fullname,mobile,email,address)
 
 try{
 

@@ -69,7 +69,7 @@ const row = document.createElement("tr");
 
 row.innerHTML = `
 <td>${index + 1}</td>
-<td>${user.name || ""}</td>
+<td>${user.Fullname || ""}</td>
 <td>${user.mobile || ""}</td>
 <td>${user.email || ""}</td>
 <td>${user.address || ""}</td>
